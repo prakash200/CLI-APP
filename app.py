@@ -1,6 +1,5 @@
 # while signup check exist email and email correctection
 #In read.md developer options like check database,table and user options
-# pip install requests
 
 import hashlib
 import typer
@@ -13,13 +12,11 @@ app = typer.Typer()
 def createdatabase():
     conn = sqlite3.connect("Users_Details.db")
     print ("Created Users_Details Database successfully!");
-    #check database exist or not
     conn.close();
 
 
 @app.command()
 def createtable():
-    #check table exist or not
     conn = sqlite3.connect('Users_Details.db')
     try:
         conn.execute('''CREATE TABLE Login_Details
@@ -110,7 +107,6 @@ def checkloginstatus(email: str):
 
 @app.command()
 def viewusers(email: str):
-    # check if db and table exist
     # To check whether user is logged in we are collecting his email-id and verifying
     if checkloginstatus(email)==0:
         print("Signup/Login First!")
