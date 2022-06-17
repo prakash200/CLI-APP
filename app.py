@@ -1,9 +1,11 @@
 # while signup check exist email and email correctection
 #In read.md developer options like check database,table and user options
+# pip install requests
 
 import hashlib
 import typer
 import sqlite3
+import requests
 
 app = typer.Typer()
 
@@ -88,10 +90,10 @@ def logout(email: str):
             conn.execute("UPDATE Login_Details set LOGIN_STATUS = 0 where EMAIL_ID = ?",(email,))
             conn.commit();
             print("Loggedout Successfully!")
-            print("-----  Thankyou for using our App! -----")
+            print("-----  Thankyou for using our App -----")
         conn.close()
         return()
-    print("Account linked with Email-id --- {} --- doesn't exist!".format(email))
+    print("Account linked with Email-id --- {} --- doesn't exist !".format(email))
     conn.close()
         
 
@@ -103,7 +105,7 @@ def checkloginstatus(email: str):
         conn.close()
         print("Login status "+str(i[3]))
         return(i[3])
-    print("Account linked with Email-id --- {} ---- doesn't exist!".format(email))
+    print("Account linked with Email-id --- {} ---- doesn't exist !".format(email))
     return(0)
 
 @app.command()
@@ -115,7 +117,7 @@ def viewusers(email: str):
     else:
         conn = sqlite3.connect('Users_Details.db')
         cursor = conn.execute("SELECT name, EMAIL_ID, PASSWORD , LOGIN_STATUS from Login_Details")
-        print("Name       Email-id       Password       Login_Status")
+        print("Name       Email-id              Password                        Login_Status")
         for row in cursor:
             print(row[0], end="     ")
             print(row[1], end="     ")
@@ -198,16 +200,66 @@ def deleteuser(email: str,password:str ):
                 conn.close()
                 return()
     print("Account linked with Email-id --- {}--- doesn't exist!".format(email))
-    conn.close()                                   
+    conn.close()     
+
+# 1. Humidity
+# 2. Pressure
+# 3. Average temperature
+# 4. Wind Speed
+# 5. Wind degree
+# 6. UV Index 
 
 
+#Reference_API_Link1 = "https://openweathermap.org/api/one-call-api"
+#Peferance_API_Link2 = "https://openweathermap.org/current"
+
+@app.command()
+def weatherreport(email: str,city: str): 
+    if checkloginstatus(email)==0:
+        print("Signup/Login First!")
+    else:
+        File = open("API_KEY.txt", "r")
+        API_KEY = File.read().strip()
+
+        cityname = city
+
+        Api_link = "https://api.openweathermap.org/data/2.5/weather?q="+cityname+"&appid="+API_KEY
+
+        Request_Api = requests.get(Api_link)
+        Api_data = Request_Api.json()
+
+        if Api_data['cod'] == '404':
+            print("Invalild city {}, Please check your city name".format(cityname))
+        else:
+            coordinates = Api_data['coord']
+            main = Api_data['main']
+            wind = Api_data['wind']
+        
+            lat = coordinates['lat']
+            long = coordinates['lon']
+            humidity = main['humidity']
+            pressure = main['pressure']
+            min_temp = main['temp_min']
+            max_temp = main['temp_max']
+            average_temperature = (min_temp+max_temp)/2
+            wind_speed = wind['speed']
+            wind_degree = wind['deg']
 
 
+            Api_link1 = "https://api.openweathermap.org/data/2.5/onecall?lat="+str(lat)+"&lon="+str(long)+"&exclude=hourly,daily&appid="+API_KEY
 
+            Request_Api = requests.get(Api_link1)
+            Api_data = Request_Api.json()
+            uvi_index = Api_data['current']['uvi'] 
 
-
-
-
+            print("----- Weather Report -----")
+            print("Humidity: {} %".format(humidity))
+            print("Pressure: {} hpa".format(pressure))
+            # Kelvin to degrees coversion 1C = k=273.15
+            print("Avg.Temperature: {:.1f} degrees".format(average_temperature-273.15))
+            print("Wind_speed: {} m/s".format(wind_speed))
+            print("Wind_degree: {} degrees".format(wind_degree))
+            print("UV index: {}".format(uvi_index))                            
 
 
 if __name__ == "__main__":
