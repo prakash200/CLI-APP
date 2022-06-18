@@ -71,7 +71,7 @@ def login(email: str , password: str):
                 conn.commit();
                 print("Logged in Successfully!")
                 print("Hi "+str(name)+"!")
-                print("-----  Weleocome to our App  -----")
+                print("-----  Weleocome to Weather Forecasting  -----")
         else:
             print("Invalid Credentials!")
     conn.close()
@@ -86,7 +86,7 @@ def logout(email: str):
         else:
             conn.execute("UPDATE Login_Details set LOGIN_STATUS = 0 where EMAIL_ID = ?",(email,))
             conn.commit();
-            print("Loggedout Successfully!")
+            print("Logged out Successfully!")
             print("-----  Thankyou for using our App -----")
         conn.close()
         return()
