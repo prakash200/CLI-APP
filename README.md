@@ -38,12 +38,12 @@ check the weather report for a given city .
 
 | Parameter | Type     | Description                |
 | :-------- | :------- | :------------------------- |
-| `City name` | `string` | **Required**. Your city name|
-| `API key` | `string` | **Required**. Your API key |
+| `City name` | `string` | **Required**. city name|
+| `API key` | `string` | **Required**. API key |
 
 #### API-2
 
-```http
+```bash
   https://api.openweathermap.org/data/2.5/onecall?lat={lat}&lon={lon}&exclude={part}&appid={API key}
 ```
 
@@ -51,7 +51,7 @@ check the weather report for a given city .
 | :-------- | :------- | :-------------------------------- |
 | `lat, lon`      | `string` | **Required**. Geographical coordinates (latitude, longitude) |
 | `Part` | `string` | **Optional**. By using this parameter you can exclude some parts of the weather data from the API response. It should be a comma-delimited list (without spaces). Available values:  current,minutely,hourly,dailyalerts.
-| `API key` | `string` | **Required**. Your API key | 
+| `API key` | `string` | **Required**.  API key | 
 
 
 ## Installation
@@ -59,24 +59,24 @@ check the weather report for a given city .
 - Windows   --> Git Bash
 - Linux/Mac --> Terminal
 
-Clone the project
+** Clone the project 
 
 ```bash
   git clone https://github.com/prakash200/CLI-APP.git
 ```
 
-Go to the project directory
+** Go to the project directory 
 
 ```bash
   cd CLI-APP
 ```
-Activate Virtual Environment
+** Activate Virtual Environment
 
 ```bash
   source Cli-env/bin/activate
 ```
 
-Install dependencies
+** Install dependencies
 
 ```bash
   pip install requirements.txt
@@ -89,3 +89,6 @@ Install dependencies
 ```bash
   python3 app.py --help
 ```
+
+** The above help command list all the available app commands, which are functions in a App .
+
