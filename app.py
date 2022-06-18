@@ -205,9 +205,10 @@ def deleteuser(email: str,password:str ):
 # 5. Wind degree
 # 6. UV Index 
 
-
+#Peferance_API_Link = "https://openweathermap.org/current"
 #Reference_API_Link1 = "https://openweathermap.org/api/one-call-api"
-#Peferance_API_Link2 = "https://openweathermap.org/current"
+
+
 
 @app.command()
 def weatherreport(email: str,city: str): 
