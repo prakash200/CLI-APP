@@ -68,13 +68,13 @@
 ```bash
   cd CLI-APP
 ```
-- Make sure you Install python, which automatically installs pip.
 
 **Activate Virtual Environment**
 
 ```bash
   source Cli-env/bin/activate
 ```
+- Make sure you Install python, which automatically installs pip.
 
 **Install dependencies**
 
