@@ -69,6 +69,7 @@
   cd CLI-APP
 ```
 **Activate Virtual Environment**
+- Install python, which automatically installs pip.
 
 ```bash
   source Cli-env/bin/activate
@@ -77,7 +78,7 @@
 **Install dependencies**
 
 ```bash
-  pip install requirements.txt
+  pip install -r requirements.txt
 ```
 
 - Project installation Done.
@@ -89,7 +90,7 @@
 The below help command list out all the available app commands, which are functions in the App.
 
 ```bash
-(Cli-env) prakash@PKC:~/Documents/CLI_app/CLI-APP$ python3 app.py --help
+(Cli-env) prakash@PKC:~/Documents/CLI_app/CLI-APP$ python app.py --help
 Usage: app.py [OPTIONS] COMMAND [ARGS]...
 
 Options:
@@ -123,13 +124,13 @@ Commands:
 - The below command creates database with the name **Users_Details.db**
 
 ```bash
-(Cli-env) prakash@PKC:~/Documents/CLI_app/CLI-APP$ python3 app.py createdatabase
+(Cli-env) prakash@PKC:~/Documents/CLI_app/CLI-APP$ python app.py createdatabase
 Created Users_Details Database successfully!
 ```
 - The below command creates table with the name **Login_Details**
 
 ```bash
-(Cli-env) prakash@PKC:~/Documents/CLI_app/CLI-APP$ python3 app.py createtable
+(Cli-env) prakash@PKC:~/Documents/CLI_app/CLI-APP$ python app.py createtable
 created Login_Details Table successfully!
 ```
 - Table consists of **username** , **Email-id** , **Password(hashed)** , **Login_status**
@@ -163,7 +164,7 @@ You have registered successfully!
 - Below help command displays the Documentation of the command .
 
 ```bash
-(Cli-env) prakash@PKC:~/Documents/CLI_app/CLI-APP$ python3 app.py login --help
+(Cli-env) prakash@PKC:~/Documents/CLI_app/CLI-APP$ python app.py login --help
 Usage: app.py login [OPTIONS] EMAIL PASSWORD
 
 Arguments:
@@ -180,7 +181,7 @@ Options:
 <br>
 
 ```bash
-(Cli-env) prakash@PKC:~/Documents/CLI_app/CLI-APP$ python3 app.py login user0@gmail.com user0password
+(Cli-env) prakash@PKC:~/Documents/CLI_app/CLI-APP$ python app.py login user0@gmail.com user0password
 Logged in Successfully!
 Hi user0!
 -----  Weleocome to Weather Forecasting App  -----
@@ -192,7 +193,7 @@ Hi user0!
 - Login_status "1" implies user has logged in.
 
 ```bash
-(Cli-env) prakash@PKC:~/Documents/CLI_app/CLI-APP$ python3 app.py viewusers user0@gmail.com
+(Cli-env) prakash@PKC:~/Documents/CLI_app/CLI-APP$ python app.py viewusers user0@gmail.com
 Login status 1
 Name       Email-id              Password                        Login_Status
 user0     user0@gmail.com     11bf18b346fc29f1c47af18064a992ab      1
@@ -205,16 +206,16 @@ user3     user3@gmail.com     cc17149e22e73f910c1f8d59a52228b7      0
 - User1 didn't login and tries to Read all the users.
 
 ```bash
-(Cli-env) prakash@PKC:~/Documents/CLI_app/CLI-APP$ python3 app.py viewusers user1@gmail.com
+(Cli-env) prakash@PKC:~/Documents/CLI_app/CLI-APP$ python app.py viewusers user1@gmail.com
 Login status 0
 Signup/Login First!
 ```
 - User can check his login status
 
 ```bash
-(Cli-env) prakash@PKC:~/Documents/CLI_app/CLI-APP$ python3 app.py checkloginstatus user0@gmail.com
+(Cli-env) prakash@PKC:~/Documents/CLI_app/CLI-APP$ python app.py checkloginstatus user0@gmail.com
 Login status 1
-(Cli-env) prakash@PKC:~/Documents/CLI_app/CLI-APP$ python3 app.py checkloginstatus user1@gmail.com
+(Cli-env) prakash@PKC:~/Documents/CLI_app/CLI-APP$ python app.py checkloginstatus user1@gmail.com
 Login status 0
 ```
 
@@ -224,16 +225,16 @@ Login status 0
 <br>
 
 ```bash
-(Cli-env) prakash@PKC:~/Documents/CLI_app/CLI-APP$ python3 app.py changeusername user0@gmail.com USER0
+(Cli-env) prakash@PKC:~/Documents/CLI_app/CLI-APP$ python app.py changeusername user0@gmail.com USER0
 Login status 1
 Successfully Updated username!
-(Cli-env) prakash@PKC:~/Documents/CLI_app/CLI-APP$ python3 app.py changeemailid  user0@gmail.com USER0@GMAIL.COM 
+(Cli-env) prakash@PKC:~/Documents/CLI_app/CLI-APP$ python app.py changeemailid  user0@gmail.com USER0@GMAIL.COM 
 Login status 1
 Successfully Updated Email-id
-(Cli-env) prakash@PKC:~/Documents/CLI_app/CLI-APP$ python3 app.py changepassword  USER0@GMAIL.COM  USER0PASSWORD
+(Cli-env) prakash@PKC:~/Documents/CLI_app/CLI-APP$ python app.py changepassword  USER0@GMAIL.COM  USER0PASSWORD
 Login status 1
 Successfully Updated Password!
-(Cli-env) prakash@PKC:~/Documents/CLI_app/CLI-APP$ python3 app.py viewusers  USER0@GMAIL.COM  
+(Cli-env) prakash@PKC:~/Documents/CLI_app/CLI-APP$ python app.py viewusers  USER0@GMAIL.COM  
 Login status 1
 Name       Email-id              Password                        Login_Status
 USER0     USER0@GMAIL.COM     1d367d80b05887be3e14b8232a2ae87d      1
@@ -249,30 +250,30 @@ user3     user3@gmail.com     cc17149e22e73f910c1f8d59a52228b7      0
 - Old and new credentials cannot be same while updation. Below is the scenario .
 
 ```bash
-(Cli-env) prakash@PKC:~/Documents/CLI_app/CLI-APP$ python3 app.py changeusername USER0@GMAIL.COM USER0
+(Cli-env) prakash@PKC:~/Documents/CLI_app/CLI-APP$ python app.py changeusername USER0@GMAIL.COM USER0
 Login status 1
 Old and New user names are same!
-(Cli-env) prakash@PKC:~/Documents/CLI_app/CLI-APP$ python3 app.py changeemailid USER0@GMAIL.COM USER0@GMAIL.COM
+(Cli-env) prakash@PKC:~/Documents/CLI_app/CLI-APP$ python app.py changeemailid USER0@GMAIL.COM USER0@GMAIL.COM
 Login status 1
 Old and New Emails are same!
-(Cli-env) prakash@PKC:~/Documents/CLI_app/CLI-APP$ python3 app.py changepassword USER0@GMAIL.COM USER0PASSWORD
+(Cli-env) prakash@PKC:~/Documents/CLI_app/CLI-APP$ python app.py changepassword USER0@GMAIL.COM USER0PASSWORD
 Login status 1
 Old and New passwords are same!
 ```
 - Lets Delete **USER0**
 
 ```bash
-(Cli-env) prakash@PKC:~/Documents/CLI_app/CLI-APP$ python3 app.py deleteuser  USER0@GMAIL.COM USER0PASSWORD
+(Cli-env) prakash@PKC:~/Documents/CLI_app/CLI-APP$ python app.py deleteuser  USER0@GMAIL.COM USER0PASSWORD
 Successfully Deleted!
 ```
 - Let's login in app with **user1** and check users.
 
 ```bash
-(Cli-env) prakash@PKC:~/Documents/CLI_app/CLI-APP$ python3 app.py login user1@gmail.com user1password
+(Cli-env) prakash@PKC:~/Documents/CLI_app/CLI-APP$ python app.py login user1@gmail.com user1password
 Logged in Successfully!
 Hi user1!
 -----  Weleocome to Weather Forecasting  -----
-(Cli-env) prakash@PKC:~/Documents/CLI_app/CLI-APP$ python3 app.py viewusers user1@gmail.com 
+(Cli-env) prakash@PKC:~/Documents/CLI_app/CLI-APP$ python app.py viewusers user1@gmail.com 
 Login status 1
 Name       Email-id              Password                        Login_Status
 user1     user1@gmail.com     5ccafb277fa23cd0e71d99bc20715d9a      1
@@ -288,7 +289,7 @@ user3     user3@gmail.com     cc17149e22e73f910c1f8d59a52228b7      0
 - Below Weather report generated on **Jun 18 5:20 PM**
 
 ```bash
-(Cli-env) prakash@PKC:~/Documents/CLI_app/CLI-APP$ python3 app.py weatherreport user1@gmail.com hyderabad
+(Cli-env) prakash@PKC:~/Documents/CLI_app/CLI-APP$ python app.py weatherreport user1@gmail.com hyderabad
 Login status 1
 ----- Weather Report -----
 Humidity: 55 %
@@ -297,7 +298,7 @@ Avg.Temperature: 34.0 degrees
 Wind_speed: 5.66 m/s
 Wind_degree: 170 degrees
 UV index: 0.19
-(Cli-env) prakash@PKC:~/Documents/CLI_app/CLI-APP$ python3 app.py weatherreport user1@gmail.com Bengaluru
+(Cli-env) prakash@PKC:~/Documents/CLI_app/CLI-APP$ python app.py weatherreport user1@gmail.com Bengaluru
 Login status 1
 ----- Weather Report -----
 Humidity: 68 %
@@ -306,7 +307,7 @@ Avg.Temperature: 28.0 degrees
 Wind_speed: 1.54 m/s
 Wind_degree: 170 degrees
 UV index: 0.62
-(Cli-env) prakash@PKC:~/Documents/CLI_app/CLI-APP$ python3 app.py weatherreport user1@gmail.com Delhi
+(Cli-env) prakash@PKC:~/Documents/CLI_app/CLI-APP$ python app.py weatherreport user1@gmail.com Delhi
 Login status 1
 ----- Weather Report -----
 Humidity: 62 %
@@ -322,10 +323,10 @@ UV index: 0.84
 ### Logout account
 
 ```bash
-(Cli-env) prakash@PKC:~/Documents/CLI_app/CLI-APP$ python3 app.py logout user1@gmail.com
+(Cli-env) prakash@PKC:~/Documents/CLI_app/CLI-APP$ python app.py logout user1@gmail.com
 Logged out Successfully!
 -----  Thankyou for using our App -----
-(Cli-env) prakash@PKC:~/Documents/CLI_app/CLI-APP$ python3 app.py checkloginstatus user1@gmail.com
+(Cli-env) prakash@PKC:~/Documents/CLI_app/CLI-APP$ python app.py checkloginstatus user1@gmail.com
 Login status 0
 ```
 
