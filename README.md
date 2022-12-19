@@ -116,7 +116,7 @@ Commands:
   viewusers
   weatherreport
 ```
-- **I have already created database , Table and 3 sample users. If you want to skip then start with Step_2  else deleted the Users_Details.db file and start from Step_1.**
+- **I have already created database , Table and 3 sample users. If you want to skip then start with Step_2  else delete the Users_Details.db file and start from Step_1.**
 
 ## Step_1
 
